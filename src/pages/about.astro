@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<Layout
+	title="About Me"
+	description="Software Engineer specializing in Django backend development and security engineering."
+	pubDate={new Date('August 16 2026')}
+	heroImage="/blog-placeholder-about.jpg"
+>
+	<p>
+		I'm Amin Khani, a Software Engineer who works across two closely related disciplines:
+		<strong>Django backend development</strong> and <strong>security engineering</strong>. I like
+		building backend systems that are not just functional, but hardened, monitored, and resilient
+		against real-world threats.
+	</p>
+
+	<h2>What I do</h2>
+	<p>
+		I design and build secure backend services with Django and Django REST Framework — APIs,
+		real-time systems with Django Channels, background processing with Celery, and geospatial
+		features with GeoDjango. On the security side, I work on OS hardening, patch and
+		vulnerability management, malware analysis, and SOC-style threat detection and incident
+		response.
+	</p>
+	<p>
+		I'm currently a <strong>Security Solutions Deployment Engineer</strong> at
+		<a href="https://aps-co.net/" target="_blank">Andisheh Pardazan e Sepahan (APS-Co)</a>, where I
+		deploy and configure enterprise security platforms — including Kaspersky Next EDR Expert and
+		XDR Expert — across client environments running Docker and Kubernetes. I work directly with
+		client IT and security teams to integrate new tooling into existing infrastructure across
+		Linux, Windows, and containerized environments, and I help configure SOC workflows for threat
+		detection, malware, and incident analysis.
+	</p>
+	<p>
+		Before that, I spent nearly two years as a <strong>Software Engineer</strong> at
+		<a href="https://fardaadco.ir/" target="_blank">Fardaad Co.</a>, designing and developing secure
+		backend services with Django and DRF. I implemented patch management workflows to reduce
+		exposure to known vulnerabilities, conducted vulnerability assessments using CVE and NVD
+		databases, applied CIS benchmark hardening policies, and built an SSH firewall handler that
+		significantly cut down unauthorized access attempts. I also worked closely with DevOps
+		pipelines to keep security monitoring continuous.
+	</p>
+
+	<h2>Open source</h2>
+	<p>
+		I maintain <a href="https://github.com/aminkhani/secap" target="_blank">SECAP</a>, a
+		cross-platform automated system hardening framework for auditing and enforcing security
+		baselines on Windows and Linux, aligned with CIS Benchmarks and DISA STIG standards. It
+		automates detection of misconfigurations and remediation of insecure defaults on both
+		operating systems.
+	</p>
+
+	<h2>Education</h2>
+	<p>
+		I hold a Bachelor's degree in Computer Engineering from the
+		<strong>University of Kashan</strong> (2021–2024), graduating with a 16/20. My undergraduate
+		project focused on sentiment analysis using a semi-supervised GAN, and I ranked 1st in a
+		master's-level Reinforcement Learning elective.
+	</p>
+
+	<h2>Skills</h2>
+	<p>
+		<strong>Backend &amp; Frameworks:</strong> Django, Django REST Framework, FastAPI, Django Channels,
+		Celery, GeoDjango<br />
+		<strong>Databases &amp; Caching:</strong> PostgreSQL, Redis, MongoDB, PostGIS<br />
+		<strong>DevOps:</strong> Docker, Kubernetes, Ansible, Prometheus, Grafana<br />
+		<strong>Security &amp; Networking:</strong> Patch &amp; vulnerability management, OS hardening, malware
+		analysis, SOC Tier 1, LPIC-1, Network+, Security+
+	</p>
+
+	<h2>Get in touch</h2>
+	<p>
+		I'm always happy to talk about secure backend architecture, hardening automation, or DevSecOps.
+		Reach me at <a href="mailto:aminkhani.dev@gmail.com">aminkhani.dev@gmail.com</a>, or find me on
+		<a href="https://github.com/aminkhani" target="_blank">GitHub</a> and
+		<a href="https://linkedin.com/in/aminkhanidev" target="_blank">LinkedIn</a>.
+	</p>
+</Layout>

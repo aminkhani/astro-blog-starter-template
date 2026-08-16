@@ -1,0 +1,53 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>👋 Hi, I'm Amin Khani</h1>
+			<p>
+				I'm a Software Engineer working at the intersection of <strong>Django backend development</strong>
+				and <strong>security engineering</strong>. I build secure backend services and also work hands-on
+				with system hardening, vulnerability management, and enterprise security tooling.
+			</p>
+			<p>
+				Currently, I'm a <strong>Security Solutions Deployment Engineer</strong> at
+				<a href="https://aps-co.net/" target="_blank">Andisheh Pardazan e Sepahan (APS-Co)</a>, deploying
+				and configuring enterprise EDR/XDR platforms across client environments running Docker and
+				Kubernetes. Before that, I spent nearly two years as a Software Engineer at
+				<a href="https://fardaadco.ir/" target="_blank">Fardaad Co.</a>, where I designed secure backend
+				services with Django and Django REST Framework, ran vulnerability assessments against CVE/NVD
+				databases, and applied CIS/DISA STIG hardening standards in production.
+			</p>
+			<p>
+				On the side, I build <a href="https://github.com/aminkhani/secap" target="_blank"
+					>SECAP</a
+				>, an open-source, cross-platform system hardening framework for automating security audits and
+				baseline enforcement on Windows and Linux.
+			</p>
+			<p>This blog is where I write about:</p>
+			<ul>
+				<li>Building secure, production-grade Django &amp; DRF backends</li>
+				<li>System hardening with CIS Benchmarks and DISA STIG</li>
+				<li>Vulnerability management, patching, and CVE tracking</li>
+				<li>SOC workflows, threat detection, and incident analysis</li>
+				<li>DevSecOps: Docker, Kubernetes, and secure CI/CD pipelines</li>
+			</ul>
+			<p>
+				Take a look at my <a href="/blog">blog posts</a>, learn more <a href="/about">about me</a>, or
+				find me on <a href="https://github.com/aminkhani" target="_blank">GitHub</a> and
+				<a href="https://linkedin.com/in/aminkhanidev" target="_blank">LinkedIn</a>.
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>
