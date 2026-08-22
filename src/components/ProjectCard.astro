@@ -1,0 +1,72 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+	project: Project;
+}
+const { project } = Astro.props;
+---
+
+<a class="card project-card" href={project.url} target="_blank" rel="noopener noreferrer">
+	<div class="project-top">
+		<span class="project-name">{project.name}</span>
+		{project.status && <span class="status">{project.status}</span>}
+	</div>
+	<p class="project-desc">{project.description}</p>
+	<div class="project-tags">
+		{project.tags.map((t) => <span class="tag">{t}</span>)}
+	</div>
+	<span class="project-link">View on GitHub &rarr;</span>
+</a>
+
+<style>
+	.project-card {
+		display: flex;
+		flex-direction: column;
+		padding: 1.6em;
+		text-decoration: none;
+		color: inherit;
+		height: 100%;
+	}
+	.project-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75em;
+		margin-bottom: 0.6em;
+	}
+	.project-name {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: 1.15em;
+		color: var(--ink);
+	}
+	.status {
+		font-family: var(--font-mono);
+		font-size: 0.72em;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--teal);
+		background: var(--teal-soft);
+		padding: 0.2em 0.55em;
+		border-radius: 999px;
+	}
+	.project-desc {
+		color: var(--muted);
+		font-size: 0.95em;
+		margin-bottom: 1.2em;
+		flex-grow: 1;
+	}
+	.project-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4em;
+		margin-bottom: 1.2em;
+	}
+	.project-link {
+		font-family: var(--font-mono);
+		font-size: 0.85em;
+		color: var(--accent);
+		font-weight: 500;
+	}
+</style>
