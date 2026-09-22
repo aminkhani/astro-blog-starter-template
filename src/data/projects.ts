@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
 		featured: true,
 	},
 	{
-		name: 'This Blog',
+		name: 'Resume Blog',
 		description:
 			'Personal site and writing on Django backend development, security engineering, and DevSecOps — built with Astro and deployed on Cloudflare Workers.',
 		tags: ['Astro', 'Cloudflare Workers'],
