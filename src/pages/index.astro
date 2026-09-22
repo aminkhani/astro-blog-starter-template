@@ -1,63 +1,95 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import PostCard from '../components/PostCard.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { PROJECTS } from '../data/projects';
-import { getCollection } from 'astro:content';
-import { getReadingTime } from '../utils/readingTime';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import PostCard from "../components/PostCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { PROJECTS } from "../data/projects";
+import { getCollection } from "astro:content";
+import { getReadingTime } from "../utils/readingTime";
 
-const posts = (await getCollection('blog'))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 3);
+const posts = (await getCollection("blog"))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section class="hero">
-				<div class="hero-copy">
-					<p class="eyebrow">Software Engineer &middot; Security Engineer</p>
-					<h1>Hi, I'm Amin Khani.</h1>
-					<p class="hero-lede">
-						I build secure backend systems with Django, then spend just as much time hardening,
-						monitoring, and defending them. Currently deploying enterprise EDR/XDR platforms and
-						writing about the practical side of DevSecOps.
-					</p>
-					<div class="hero-actions">
-						<a class="btn btn-primary" href="/blog">Read the blog</a>
-						<a class="btn btn-secondary" href="/about">About me</a>
-					</div>
-				</div>
-				<div class="console" role="img" aria-label="Terminal-style summary of Amin's focus areas">
-					<div class="console-bar">
-						<span class="dot red"></span><span class="dot yellow"></span><span class="dot green"
-						></span>
-						<span class="console-title">status.sh</span>
-					</div>
-					<div class="console-body">
-						<p><span class="prompt">$</span> whoami</p>
-						<p class="out">&gt; Amin Khani — Software Engineer</p>
-						<p><span class="prompt">$</span> focus --list</p>
-						<p class="out">&gt; DevOps Engineer </p>
-						<p class="out">&gt; Django &amp; DRF backend systems</p>
-						<p class="out">&gt; OS hardening (CIS / DISA STIG)</p>
-						<p class="out">&gt; Vulnerability &amp; patch management</p>
-						<p><span class="prompt">$</span> status --check</p>
-						<p class="out ok">&gt; systems: hardened <span class="check">&#10003;</span></p>
-						<p class="cursor"><span class="prompt">$</span> <span class="blink">&#9608;</span></p>
-					</div>
-				</div>
-			</section>
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">
+                        Software Engineer &middot; Security Engineer
+                    </p>
+                    <h1>Hi, I'm Amin Khani.</h1>
+                    <p class="hero-lede">
+                        I build secure backend systems with Django, then spend
+                        just as much time hardening, monitoring, and defending
+                        them. Currently deploying enterprise EDR/XDR platforms
+                        and writing about the practical side of DevSecOps.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="/blog">Read the blog</a
+                        >
+                        <a class="btn btn-secondary" href="/about">About me</a>
+                    </div>
+                </div>
+                <div
+                    class="console"
+                    role="img"
+                    aria-label="Terminal-style summary of Amin Khani's engineering focus"
+                >
+                    <div class="console-bar">
+                        <span class="dot red"></span><span class="dot yellow"
+                        ></span><span class="dot green"></span>
+                        <span class="console-title">profile.sh</span>
+                    </div>
+                    <div class="console-body">
+                        <p><span class="prompt">$</span> whoami</p>
+                        <p class="out">&gt; Amin Khani — Software Engineer . 3 yrs</p>
+                        <p><span class="prompt">$</span> focus --list</p>
+                        <p class="out">&gt; Backend &amp; DevOps engineering</p>
+                        <p class="out">
+                            &gt; Linux &amp; infrastructure automation
+                        </p>
+                        <p class="out">
+                            &gt; OS hardening &amp; security compliance
+                        </p>
+                        <p class="out">
+                            &gt; Vulnerability &amp; patch management
+                        </p>
+                        <p><span class="prompt">$</span> build --what</p>
+                        <p class="out">
+                            &gt; Secure, automated, maintainable systems
+                        </p>
+                        <p><span class="prompt">$</span> status --check</p>
+                        <p class="out ok">
+                            &gt; security: hardened <span class="check"
+                                >&#10003;</span>
+                        </p>
+                        <p class="out ok">
+                            &gt; automation: enabled <span class="check"
+                                >&#10003;</span>
+                        </p>
+                        <p class="out ok">
+                            &gt; systems: monitored <span class="check"
+                                >&#10003;</span>
+                        </p>
+                        <p class="cursor">
+                            <span class="prompt">$</span>
+                            <span class="blink">&#9608;</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-			<section class="currently">
+            <section class="currently">
                 <div class="currently-header">
                     <div>
                         <p class="eyebrow">What I'm up to</p>
@@ -74,7 +106,9 @@ const posts = (await getCollection('blog'))
                         <div class="item-icon">💼</div>
                         <div class="item-content">
                             <span class="label">Working as</span>
-                            <span class="value">Security Solutions Deployment Engineer</span>
+                            <span class="value"
+                                >Security Solutions Deployment Engineer</span
+                            >
                             <span class="meta">APS-Co</span>
                         </div>
                     </div>
@@ -91,7 +125,9 @@ const posts = (await getCollection('blog'))
                             >
                                 SECAP ↗
                             </a>
-                            <span class="meta">Cross-platform hardening framework</span>
+                            <span class="meta"
+                                >Cross-platform hardening framework</span
+                            >
                         </div>
                     </div>
 
@@ -100,7 +136,9 @@ const posts = (await getCollection('blog'))
                         <div class="item-content">
                             <span class="label">Writing about</span>
                             <span class="value">Security & DevSecOps</span>
-                            <span class="meta">Django · Hardening · DevSecOps</span>
+                            <span class="meta"
+                                >Django · Hardening · DevSecOps</span
+                            >
                         </div>
                     </div>
 
@@ -122,159 +160,170 @@ const posts = (await getCollection('blog'))
                 </div>
             </section>
 
-			<section class="section">
-				<div class="section-head">
-					<div>
-						<p class="eyebrow">Latest writing</p>
-						<h2>From the blog</h2>
-					</div>
-					<a class="btn btn-secondary" href="/blog">All posts &rarr;</a>
-				</div>
-				<div class="post-grid">
-					{
-						posts.map((post, i) => (
-							<PostCard
-								href={`/blog/${post.id}/`}
-								title={post.data.title}
-								description={post.data.description}
-								pubDate={post.data.pubDate}
-								heroImage={post.data.heroImage}
-								readingTime={getReadingTime(post.body || '')}
-								tags={post.data.tags}
-							/>
-						))
-					}
-				</div>
-			</section>
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Latest writing</p>
+                        <h2>From the blog</h2>
+                    </div>
+                    <a class="btn btn-secondary" href="/blog"
+                        >All posts &rarr;</a
+                    >
+                </div>
+                <div class="post-grid">
+                    {
+                        posts.map((post, i) => (
+                            <PostCard
+                                href={`/blog/${post.id}/`}
+                                title={post.data.title}
+                                description={post.data.description}
+                                pubDate={post.data.pubDate}
+                                heroImage={post.data.heroImage}
+                                readingTime={getReadingTime(post.body || "")}
+                                tags={post.data.tags}
+                            />
+                        ))
+                    }
+                </div>
+            </section>
 
-			<section class="section">
-				<div class="section-head">
-					<div>
-						<p class="eyebrow">Selected work</p>
-						<h2>Projects</h2>
-					</div>
-					<a class="btn btn-secondary" href="/projects">All projects &rarr;</a>
-				</div>
-				<div class="project-grid">
-					{PROJECTS.filter((p) => p.featured).map((project) => <ProjectCard project={project} />)}
-				</div>
-			</section>
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Selected work</p>
+                        <h2>Projects</h2>
+                    </div>
+                    <a class="btn btn-secondary" href="/projects"
+                        >All projects &rarr;</a
+                    >
+                </div>
+                <div class="project-grid">
+                    {
+                        PROJECTS.filter((p) => p.featured).map((project) => (
+                            <ProjectCard project={project} />
+                        ))
+                    }
+                </div>
+            </section>
 
-			<section class="section cta-section">
-				<div class="cta card">
-					<div>
-						<h2>Let's talk security &amp; backend systems</h2>
-						<p>
-							Always happy to discuss secure backend architecture, hardening automation, or
-							DevSecOps.
-						</p>
-					</div>
-					<a class="btn btn-primary" href="mailto:aminkhani.dev@gmail.com">Get in touch</a>
-				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
+            <section class="section cta-section">
+                <div class="cta card">
+                    <div>
+                        <h2>Let's talk security &amp; backend systems</h2>
+                        <p>
+                            Always happy to discuss secure backend architecture,
+                            hardening automation, or DevSecOps.
+                        </p>
+                    </div>
+                    <a
+                        class="btn btn-primary"
+                        href="mailto:aminkhani.dev@gmail.com">Get in touch</a
+                    >
+                </div>
+            </section>
+        </main>
+        <Footer />
+    </body>
 </html>
 
 <style>
-	.hero {
-		display: grid;
-		grid-template-columns: 1.1fr 0.9fr;
-		gap: 3em;
-		align-items: center;
-		padding: 4.5em 0 3em 0;
-	}
-	.hero h1 {
-		font-size: 3em;
-		margin: 0.3em 0 0.5em 0;
-	}
-	.hero-lede {
-		font-size: 1.1em;
-		color: var(--muted);
-		max-width: 46ch;
-	}
-	.hero-actions {
-		display: flex;
-		gap: 0.9em;
-		margin-top: 1.6em;
-		flex-wrap: wrap;
-	}
+    .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 3em;
+        align-items: center;
+        padding: 4.5em 0 3em 0;
+    }
+    .hero h1 {
+        font-size: 3em;
+        margin: 0.3em 0 0.5em 0;
+    }
+    .hero-lede {
+        font-size: 1.1em;
+        color: var(--muted);
+        max-width: 46ch;
+    }
+    .hero-actions {
+        display: flex;
+        gap: 0.9em;
+        margin-top: 1.6em;
+        flex-wrap: wrap;
+    }
 
-	.console {
-		background: var(--surface);
-		border: 1px solid var(--border);
-		border-radius: var(--radius-lg);
-		box-shadow: var(--shadow-lg);
-		overflow: hidden;
-	}
-	.console-bar {
-		display: flex;
-		align-items: center;
-		gap: 0.4em;
-		padding: 0.75em 1em;
-		border-bottom: 1px solid var(--border);
-		background: var(--bg);
-	}
-	.dot {
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		display: inline-block;
-	}
-	.dot.red {
-		background: #ff5f57;
-	}
-	.dot.yellow {
-		background: #febc2e;
-	}
-	.dot.green {
-		background: #28c840;
-	}
-	.console-title {
-		margin-left: 0.5em;
-		font-family: var(--font-mono);
-		font-size: 0.78em;
-		color: var(--muted);
-	}
-	.console-body {
-		padding: 1.4em 1.3em;
-		font-family: var(--font-mono);
-		font-size: 0.88em;
-		line-height: 1.9;
-	}
-	.console-body p {
-		margin: 0;
-		color: var(--ink-soft);
-	}
-	.console-body .prompt {
-		color: var(--teal);
-		margin-right: 0.4em;
-	}
-	.console-body .out {
-		color: var(--muted);
-		padding-left: 1.2em;
-	}
-	.console-body .ok {
-		color: var(--teal);
-	}
-	.check {
-		color: var(--teal);
-	}
-	.blink {
-		display: inline-block;
-		width: 0.55em;
-		height: 1em;
-		background: var(--accent);
-		animation: blink 1.1s steps(1) infinite;
-	}
-	@keyframes blink {
-		50% {
-			opacity: 0;
-		}
-	}
+    .console {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        overflow: hidden;
+    }
+    .console-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        padding: 0.75em 1em;
+        border-bottom: 1px solid var(--border);
+        background: var(--bg);
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .dot.red {
+        background: #ff5f57;
+    }
+    .dot.yellow {
+        background: #febc2e;
+    }
+    .dot.green {
+        background: #28c840;
+    }
+    .console-title {
+        margin-left: 0.5em;
+        font-family: var(--font-mono);
+        font-size: 0.78em;
+        color: var(--muted);
+    }
+    .console-body {
+        padding: 1.4em 1.3em;
+        font-family: var(--font-mono);
+        font-size: 0.88em;
+        line-height: 1.9;
+    }
+    .console-body p {
+        margin: 0;
+        color: var(--ink-soft);
+    }
+    .console-body .prompt {
+        color: var(--teal);
+        margin-right: 0.4em;
+    }
+    .console-body .out {
+        color: var(--muted);
+        padding-left: 1.2em;
+    }
+    .console-body .ok {
+        color: var(--teal);
+    }
+    .check {
+        color: var(--teal);
+    }
+    .blink {
+        display: inline-block;
+        width: 0.55em;
+        height: 1em;
+        background: var(--accent);
+        animation: blink 1.1s steps(1) infinite;
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
 
-	.currently {
+    .currently {
         margin-bottom: 1em;
         padding: 1.5em;
         border: 1px solid var(--border);
@@ -432,67 +481,67 @@ const posts = (await getCollection('blog'))
         }
     }
 
-	.post-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1.5em;
-	}
-	.post-grid > :global(.featured) {
-		grid-column: span 3;
-	}
-	.post-grid > :global(.featured) :global(.post-image) {
-		aspect-ratio: 21 / 8;
-	}
+    .post-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5em;
+    }
+    .post-grid > :global(.featured) {
+        grid-column: span 3;
+    }
+    .post-grid > :global(.featured) :global(.post-image) {
+        aspect-ratio: 21 / 8;
+    }
 
-	.project-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1.5em;
-	}
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5em;
+    }
 
-	.cta {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1.5em;
-		flex-wrap: wrap;
-		padding: 2.5em;
-		background: linear-gradient(135deg, var(--accent-soft), var(--surface));
-	}
-	.cta h2 {
-		margin-bottom: 0.3em;
-	}
-	.cta p {
-		margin: 0;
-		color: var(--muted);
-	}
+    .cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5em;
+        flex-wrap: wrap;
+        padding: 2.5em;
+        background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+    }
+    .cta h2 {
+        margin-bottom: 0.3em;
+    }
+    .cta p {
+        margin: 0;
+        color: var(--muted);
+    }
 
-	@media (max-width: 900px) {
-		.hero {
-			grid-template-columns: 1fr;
-			padding-top: 2.5em;
-		}
-		.post-grid {
-			grid-template-columns: 1fr 1fr;
-		}
-		.post-grid > :global(.featured) {
-			grid-column: span 2;
-		}
-	}
-	@media (max-width: 640px) {
-		.hero h1 {
-			font-size: 2.1em;
-		}
-		.post-grid,
-		.project-grid {
-			grid-template-columns: 1fr;
-		}
-		.post-grid > :global(.featured) {
-			grid-column: span 1;
-		}
-		.cta {
-			flex-direction: column;
-			align-items: flex-start;
-		}
-	}
+    @media (max-width: 900px) {
+        .hero {
+            grid-template-columns: 1fr;
+            padding-top: 2.5em;
+        }
+        .post-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+        .post-grid > :global(.featured) {
+            grid-column: span 2;
+        }
+    }
+    @media (max-width: 640px) {
+        .hero h1 {
+            font-size: 2.1em;
+        }
+        .post-grid,
+        .project-grid {
+            grid-template-columns: 1fr;
+        }
+        .post-grid > :global(.featured) {
+            grid-column: span 1;
+        }
+        .cta {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
 </style>
