@@ -1,0 +1,81 @@
+---
+// Renders a small gradient "cover" tile with a glyph for a project card.
+// No external image files needed — everything is inline SVG, so it's crisp
+// at any size and themes correctly in light/dark mode.
+interface Props {
+	icon: 'shield' | 'blog' | 'bot' | 'helm' | 'brain' | 'recipe';
+	from: string;
+	to: string;
+	size?: 'sm' | 'lg';
+}
+const { icon, from, to, size = 'sm' } = Astro.props;
+
+const glyphs: Record<Props['icon'], string> = {
+	// Shield with a check — security / hardening
+	shield:
+		'M24 6l14 5v10c0 10-6.2 16.6-14 21-7.8-4.4-14-11-14-21V11l14-5z M17.5 24.5l4.5 4.5 8.5-9',
+	// Terminal / writing
+	blog: 'M8 12h32v24H8z M13 19l6 5-6 5 M23 29h12',
+	// Chat bot (telegram-style paper plane in a bubble)
+	bot: 'M8 10h32v20H20l-7 6v-6H8z M14 18l18-5-7 16-4-8-7-3z',
+	// Kubernetes-style helm wheel
+	helm: 'M24 8v8 M24 32v8 M24 24l6.9-4 M24 24l-13.9 8 M24 24l6.9 4 M24 24l-13.9-8 M24 24l13.9-8 M24 24l-6.9 4 M24 24l13.9 8 M24 24l-6.9-4',
+	// Brain / network nodes (RL, deep learning)
+	brain:
+		'M18 10a6 6 0 0 0-6 6v1a5 5 0 0 0-2 9 5 5 0 0 0 5 5h1a5 5 0 0 0 4-2 M30 10a6 6 0 0 1 6 6v1a5 5 0 0 1 2 9 5 5 0 0 1-5 5h-1a5 5 0 0 1-4-2 M22 12v22 M18 17h4 M18 24h4 M18 31h4',
+	// Fork & knife — recipe API
+	recipe:
+		'M15 8v14a3 3 0 0 0 3 3v13 M15 8v7 M19 8v7 M33 8c-3 0-5 4-5 9s2 6 5 6v15',
+};
+
+const strokeIcons = new Set(['blog', 'bot', 'helm', 'brain', 'recipe']);
+const gradId = `pg-${icon}-${from.replace('#', '')}`;
+---
+
+<div class={`icon-tile is-${size}`} style={`--from:${from};--to:${to}`}>
+	<svg viewBox="0 0 48 48" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+		<defs>
+			<linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
+				<stop offset="0%" stop-color={from} />
+				<stop offset="100%" stop-color={to} />
+			</linearGradient>
+			<radialGradient id={`${gradId}-sheen`} cx="20%" cy="15%" r="80%">
+				<stop offset="0%" stop-color="white" stop-opacity="0.35" />
+				<stop offset="45%" stop-color="white" stop-opacity="0" />
+			</radialGradient>
+		</defs>
+		<rect width="48" height="48" rx={size === 'lg' ? 0 : 12} fill={`url(#${gradId})`} />
+		<rect width="48" height="48" rx={size === 'lg' ? 0 : 12} fill={`url(#${gradId}-sheen)`} />
+		{icon === 'shield' ? (
+			<path d={glyphs.shield} fill="none" stroke="white" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" opacity="0.95" />
+		) : (
+			<path d={glyphs[icon]} fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />
+		)}
+	</svg>
+</div>
+
+<style>
+	.icon-tile {
+		flex-shrink: 0;
+		box-shadow: var(--shadow-sm);
+		overflow: hidden;
+	}
+	.icon-tile.is-sm {
+		width: 48px;
+		height: 48px;
+		border-radius: var(--radius-md);
+	}
+	.icon-tile.is-lg {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+	}
+	.icon-tile svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.icon-tile.is-lg svg path {
+		stroke-width: 1.4;
+	}
+</style>

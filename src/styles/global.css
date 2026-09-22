@@ -260,6 +260,19 @@ hr {
 	opacity: 0.5;
 }
 
+.status {
+	font-family: var(--font-mono);
+	font-size: 0.72em;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--teal);
+	background: var(--teal-soft);
+	padding: 0.2em 0.55em;
+	border-radius: 999px;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
 .tag {
 	display: inline-flex;
 	align-items: center;

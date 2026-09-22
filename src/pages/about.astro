@@ -1,79 +1,510 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectIcon from '../components/ProjectIcon.astro';
+import { SITE_TITLE } from '../consts';
+
+const title = `About — ${SITE_TITLE}`;
+const description = 'Software Engineer specializing in Django backend development and security engineering.';
+
+const timeline = [
+	{
+		when: '2024 — Present',
+		role: 'Security Solutions Deployment Engineer',
+		org: 'Andisheh Pardazan e Sepahan (APS-Co)',
+		url: 'https://aps-co.net/',
+		current: true,
+		points: [
+			'Deploy and configure enterprise security platforms — Kaspersky Next EDR Expert and XDR Expert — across client environments running Docker and Kubernetes.',
+			'Work directly with client IT and security teams to integrate new tooling into existing Linux, Windows, and containerized infrastructure.',
+			'Help configure SOC workflows for threat detection, malware, and incident analysis.',
+		],
+	},
+	{
+		when: '2022 — 2024',
+		role: 'Software Engineer',
+		org: 'Fardaad Co.',
+		url: 'https://fardaadco.ir/',
+		points: [
+			'Designed and developed secure backend services with Django and Django REST Framework.',
+			'Implemented patch management workflows to reduce exposure to known vulnerabilities.',
+			'Conducted vulnerability assessments using CVE and NVD databases and applied CIS benchmark hardening policies.',
+			'Built an SSH firewall handler that significantly cut down unauthorized access attempts.',
+		],
+	},
+	{
+		when: '2021 — 2024',
+		role: "Bachelor's in Computer Engineering",
+		org: 'University of Kashan',
+		education: true,
+		points: [
+			'Graduated with a 16/20. Undergraduate project on sentiment analysis using a semi-supervised GAN.',
+			'Ranked 1st in a master\u2019s-level Reinforcement Learning elective.',
+		],
+	},
+];
+
+const skillGroups = [
+	{
+		label: 'Backend & Frameworks',
+		skills: ['Django', 'Django REST Framework', 'FastAPI', 'Django Channels', 'Celery', 'GeoDjango'],
+	},
+	{
+		label: 'Databases & Caching',
+		skills: ['PostgreSQL', 'Redis', 'MongoDB', 'PostGIS'],
+	},
+	{
+		label: 'DevOps',
+		skills: ['Docker', 'Kubernetes', 'Ansible', 'Prometheus', 'Grafana'],
+	},
+	{
+		label: 'Security & Networking',
+		skills: [
+			'Patch & vulnerability management',
+			'OS hardening',
+			'Malware analysis',
+			'SOC Tier 1',
+			'LPIC-1',
+			'Network+',
+			'Security+',
+		],
+	},
+];
 ---
 
-<Layout
-	title="About Me"
-	description="Software Engineer specializing in Django backend development and security engineering."
-	pubDate={new Date('August 16 2026')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<p>
-		I'm Amin Khani, a Software Engineer who works across two closely related disciplines:
-		<strong>Django backend development</strong> and <strong>security engineering</strong>. I like
-		building backend systems that are not just functional, but hardened, monitored, and resilient
-		against real-world threats.
-	</p>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Hero -->
+			<section class="about-hero">
+				<div class="avatar-wrap">
+					<img src="/avatar.svg" alt="Amin Khani" width="176" height="176" class="avatar" />
+					<span class="status-pip" title="Currently working"></span>
+				</div>
+				<div class="hero-copy">
+					<p class="eyebrow">About me</p>
+					<h1>Amin Khani</h1>
+					<p class="hero-lede">
+						I'm a Software Engineer who works across two closely related disciplines:
+						<strong>Django backend development</strong> and <strong>security engineering</strong>.
+						I like building backend systems that are not just functional, but hardened,
+						monitored, and resilient against real-world threats.
+					</p>
+					<div class="hero-actions">
+						<a class="btn btn-primary" href="mailto:aminkhani.dev@gmail.com">Get in touch</a>
+						<a class="btn btn-secondary" href="https://github.com/aminkhani" target="_blank" rel="noopener noreferrer"
+							>GitHub</a
+						>
+						<a class="btn btn-secondary" href="https://linkedin.com/in/aminkhanidev" target="_blank" rel="noopener noreferrer"
+							>LinkedIn</a
+						>
+					</div>
+				</div>
+			</section>
 
-	<h2>What I do</h2>
-	<p>
-		I design and build secure backend services with Django and Django REST Framework — APIs,
-		real-time systems with Django Channels, background processing with Celery, and geospatial
-		features with GeoDjango. On the security side, I work on OS hardening, patch and
-		vulnerability management, malware analysis, and SOC-style threat detection and incident
-		response.
-	</p>
-	<p>
-		I'm currently a <strong>Security Solutions Deployment Engineer</strong> at
-		<a href="https://aps-co.net/" target="_blank">Andisheh Pardazan e Sepahan (APS-Co)</a>, where I
-		deploy and configure enterprise security platforms — including Kaspersky Next EDR Expert and
-		XDR Expert — across client environments running Docker and Kubernetes. I work directly with
-		client IT and security teams to integrate new tooling into existing infrastructure across
-		Linux, Windows, and containerized environments, and I help configure SOC workflows for threat
-		detection, malware, and incident analysis.
-	</p>
-	<p>
-		Before that, I spent nearly two years as a <strong>Software Engineer</strong> at
-		<a href="https://fardaadco.ir/" target="_blank">Fardaad Co.</a>, designing and developing secure
-		backend services with Django and DRF. I implemented patch management workflows to reduce
-		exposure to known vulnerabilities, conducted vulnerability assessments using CVE and NVD
-		databases, applied CIS benchmark hardening policies, and built an SSH firewall handler that
-		significantly cut down unauthorized access attempts. I also worked closely with DevOps
-		pipelines to keep security monitoring continuous.
-	</p>
+			<!-- What I do -->
+			<section class="section">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">What I do</p>
+						<h2>Two sides of the same problem</h2>
+					</div>
+				</div>
+				<div class="focus-grid">
+					<div class="card focus-card">
+						<span class="focus-glyph" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="26" height="26"
+								><path
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M4 6h16M4 12h16M4 18h10"
+								></path></svg
+							>
+						</span>
+						<h3>Backend engineering</h3>
+						<p>
+							Secure backend services with Django and Django REST Framework — APIs, real-time
+							systems with Django Channels, background processing with Celery, and geospatial
+							features with GeoDjango.
+						</p>
+					</div>
+					<div class="card focus-card">
+						<span class="focus-glyph" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="26" height="26"
+								><path
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M12 3l7 3v6c0 5-3.1 8.3-7 9.5-3.9-1.2-7-4.5-7-9.5V6l7-3z"
+								></path><path
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M9 12l2 2 4-4"
+								></path></svg
+							>
+						</span>
+						<h3>Security engineering</h3>
+						<p>
+							OS hardening, patch and vulnerability management, malware analysis, and SOC-style
+							threat detection and incident response.
+						</p>
+					</div>
+				</div>
+			</section>
 
-	<h2>Open source</h2>
-	<p>
-		I maintain <a href="https://github.com/aminkhani/secap" target="_blank">SECAP</a>, a
-		cross-platform automated system hardening framework for auditing and enforcing security
-		baselines on Windows and Linux, aligned with CIS Benchmarks and DISA STIG standards. It
-		automates detection of misconfigurations and remediation of insecure defaults on both
-		operating systems.
-	</p>
+			<!-- Timeline -->
+			<section class="section">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">Experience &amp; education</p>
+						<h2>Where I've been</h2>
+					</div>
+				</div>
+				<ol class="timeline">
+					{timeline.map((item) => (
+						<li class={`timeline-item ${item.current ? 'is-current' : ''}`}>
+							<div class="timeline-marker">
+								<span class="timeline-dot"></span>
+							</div>
+							<div class="timeline-content card">
+								<span class="timeline-when">{item.when}</span>
+								<h3 class="timeline-role">
+									<span>{item.role}</span>
+									{item.current && <span class="status">Current</span>}
+								</h3>
+								<p class="timeline-org">
+									{item.education ? '🎓 ' : '💼 '}
+									{item.url ? (
+										<a href={item.url} target="_blank" rel="noopener noreferrer">{item.org}</a>
+									) : (
+										item.org
+									)}
+								</p>
+								<ul class="timeline-points">
+									{item.points.map((p) => <li>{p}</li>)}
+								</ul>
+							</div>
+						</li>
+					))}
+				</ol>
+			</section>
 
-	<h2>Education</h2>
-	<p>
-		I hold a Bachelor's degree in Computer Engineering from the
-		<strong>University of Kashan</strong> (2021–2024), graduating with a 16/20. My undergraduate
-		project focused on sentiment analysis using a semi-supervised GAN, and I ranked 1st in a
-		master's-level Reinforcement Learning elective.
-	</p>
+			<!-- Skills -->
+			<section class="section">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">Toolbox</p>
+						<h2>Skills</h2>
+					</div>
+				</div>
+				<div class="skills-grid">
+					{skillGroups.map((group) => (
+						<div class="card skills-card">
+							<h3>{group.label}</h3>
+							<div class="skills-badges">
+								{group.skills.map((s) => <span class="tag">{s}</span>)}
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
 
-	<h2>Skills</h2>
-	<p>
-		<strong>Backend &amp; Frameworks:</strong> Django, Django REST Framework, FastAPI, Django Channels,
-		Celery, GeoDjango<br />
-		<strong>Databases &amp; Caching:</strong> PostgreSQL, Redis, MongoDB, PostGIS<br />
-		<strong>DevOps:</strong> Docker, Kubernetes, Ansible, Prometheus, Grafana<br />
-		<strong>Security &amp; Networking:</strong> Patch &amp; vulnerability management, OS hardening, malware
-		analysis, SOC Tier 1, LPIC-1, Network+, Security+
-	</p>
+			<!-- Open source -->
+			<section class="section">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">Open source</p>
+						<h2>What I maintain</h2>
+					</div>
+				</div>
+				<a class="card oss-card" href="https://github.com/aminkhani/secap" target="_blank" rel="noopener noreferrer">
+					<ProjectIcon icon="shield" from="#1e4fd8" to="#0c8f8d" size="sm" />
+					<div class="oss-body">
+						<h3>SECAP</h3>
+						<p>
+							A cross-platform automated system hardening framework for auditing and enforcing
+							security baselines on Windows and Linux, aligned with CIS Benchmarks and DISA STIG
+							standards. It automates detection of misconfigurations and remediation of insecure
+							defaults on both operating systems.
+						</p>
+						<span class="project-link">View on GitHub &rarr;</span>
+					</div>
+				</a>
+			</section>
 
-	<h2>Get in touch</h2>
-	<p>
-		I'm always happy to talk about secure backend architecture, hardening automation, or DevSecOps.
-		Reach me at <a href="mailto:aminkhani.dev@gmail.com">aminkhani.dev@gmail.com</a>, or find me on
-		<a href="https://github.com/aminkhani" target="_blank">GitHub</a> and
-		<a href="https://linkedin.com/in/aminkhanidev" target="_blank">LinkedIn</a>.
-	</p>
-</Layout>
+			<!-- Contact -->
+			<section class="section cta-section">
+				<div class="cta card">
+					<div>
+						<h2>Let's talk security &amp; backend systems</h2>
+						<p>
+							Always happy to discuss secure backend architecture, hardening automation, or
+							DevSecOps. Reach me by email, or find me on GitHub and LinkedIn.
+						</p>
+					</div>
+					<a class="btn btn-primary" href="mailto:aminkhani.dev@gmail.com">Get in touch</a>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		padding-bottom: 3em;
+	}
+
+	/* Hero */
+	.about-hero {
+		display: flex;
+		align-items: center;
+		gap: 2.5em;
+		padding: 4em 0 1em 0;
+	}
+	.avatar-wrap {
+		position: relative;
+		flex-shrink: 0;
+	}
+	.avatar {
+		display: block;
+		width: 176px;
+		height: 176px;
+		border-radius: 50%;
+		box-shadow: var(--shadow-lg);
+		border: 3px solid var(--surface);
+	}
+	.status-pip {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: var(--teal);
+		border: 3px solid var(--bg);
+	}
+	.hero-copy h1 {
+		font-size: 2.75em;
+		margin: 0.2em 0 0.5em 0;
+	}
+	.hero-lede {
+		color: var(--muted);
+		font-size: 1.05em;
+		max-width: 60ch;
+	}
+	.hero-actions {
+		display: flex;
+		gap: 0.9em;
+		margin-top: 1.4em;
+		flex-wrap: wrap;
+	}
+
+	/* Focus cards */
+	.focus-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5em;
+	}
+	.focus-card {
+		padding: 1.8em;
+	}
+	.focus-glyph {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+		border-radius: var(--radius-md);
+		background: var(--accent-soft);
+		color: var(--accent);
+		margin-bottom: 0.9em;
+	}
+	.focus-card h3 {
+		margin-bottom: 0.4em;
+	}
+	.focus-card p {
+		color: var(--muted);
+		margin: 0;
+	}
+
+	/* Timeline */
+	.timeline {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+	.timeline-item {
+		display: grid;
+		grid-template-columns: 24px 1fr;
+		gap: 1.2em;
+		position: relative;
+	}
+	.timeline-item:not(:last-child) {
+		padding-bottom: 1.5em;
+	}
+	.timeline-marker {
+		display: flex;
+		justify-content: center;
+		position: relative;
+	}
+	.timeline-marker::before {
+		content: '';
+		position: absolute;
+		top: 22px;
+		bottom: -1.5em;
+		width: 2px;
+		background: var(--border);
+	}
+	.timeline-item:last-child .timeline-marker::before {
+		display: none;
+	}
+	.timeline-dot {
+		width: 14px;
+		height: 14px;
+		border-radius: 50%;
+		background: var(--surface);
+		border: 3px solid var(--accent);
+		margin-top: 6px;
+		z-index: 1;
+	}
+	.timeline-item.is-current .timeline-dot {
+		background: var(--accent);
+		box-shadow: 0 0 0 4px var(--accent-soft);
+	}
+	.timeline-content {
+		padding: 1.5em 1.6em;
+		margin-bottom: 0.5em;
+	}
+	.timeline-when {
+		font-family: var(--font-mono);
+		font-size: 0.8em;
+		color: var(--muted);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	.timeline-role {
+		display: flex;
+		align-items: center;
+		gap: 0.6em;
+		margin: 0.3em 0 0.2em 0;
+		font-size: 1.2em;
+	}
+	.timeline-org {
+		color: var(--muted);
+		margin: 0 0 0.8em 0;
+		font-size: 0.95em;
+	}
+	.timeline-points {
+		margin: 0;
+		padding-left: 1.2em;
+	}
+	.timeline-points li {
+		color: var(--ink-soft);
+		margin-bottom: 0.4em;
+		font-size: 0.95em;
+	}
+
+	/* Skills */
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5em;
+	}
+	.skills-card {
+		padding: 1.6em;
+	}
+	.skills-card h3 {
+		margin-bottom: 1em;
+		font-size: 1.05em;
+	}
+	.skills-badges {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+	}
+
+	/* Open source card */
+	.oss-card {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.4em;
+		padding: 1.6em;
+		text-decoration: none;
+		color: inherit;
+	}
+	.oss-card :global(.icon-tile) {
+		margin-top: 0.1em;
+	}
+	.oss-body h3 {
+		margin-bottom: 0.4em;
+	}
+	.oss-body p {
+		color: var(--muted);
+		margin-bottom: 0.9em;
+	}
+	.oss-body .project-link {
+		font-family: var(--font-mono);
+		font-size: 0.85em;
+		color: var(--accent);
+		font-weight: 500;
+	}
+
+	/* Contact CTA (shared look with home page) */
+	.cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5em;
+		flex-wrap: wrap;
+		padding: 2.5em;
+		background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+	}
+	.cta h2 {
+		margin-bottom: 0.3em;
+	}
+	.cta p {
+		margin: 0;
+		color: var(--muted);
+		max-width: 50ch;
+	}
+
+	@media (max-width: 720px) {
+		.about-hero {
+			flex-direction: column;
+			align-items: flex-start;
+			text-align: left;
+			gap: 1.5em;
+			padding-top: 2.5em;
+		}
+		.hero-copy h1 {
+			font-size: 2.1em;
+		}
+		.focus-grid,
+		.skills-grid {
+			grid-template-columns: 1fr;
+		}
+		.oss-card {
+			flex-direction: column;
+		}
+		.cta {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+</style>

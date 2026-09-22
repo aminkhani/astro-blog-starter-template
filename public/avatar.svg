@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+	<defs>
+		<linearGradient id="avatarBg" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0%" stop-color="#1e4fd8" />
+			<stop offset="100%" stop-color="#0c8f8d" />
+		</linearGradient>
+		<radialGradient id="avatarSheen" cx="28%" cy="20%" r="75%">
+			<stop offset="0%" stop-color="#ffffff" stop-opacity="0.35" />
+			<stop offset="45%" stop-color="#ffffff" stop-opacity="0" />
+		</radialGradient>
+	</defs>
+	<circle cx="100" cy="100" r="100" fill="url(#avatarBg)" />
+	<circle cx="100" cy="100" r="100" fill="url(#avatarSheen)" />
+	<!-- subtle hex / circuit ring motif -->
+	<g opacity="0.18" fill="none" stroke="#ffffff" stroke-width="1.5">
+		<circle cx="100" cy="100" r="72" />
+		<circle cx="100" cy="100" r="58" stroke-dasharray="2 6" />
+	</g>
+	<g opacity="0.5" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round">
+		<path d="M40 60 L40 40 L60 40" />
+		<path d="M160 60 L160 40 L140 40" />
+		<path d="M40 140 L40 160 L60 160" />
+		<path d="M160 140 L160 160 L140 160" />
+	</g>
+	<!-- monogram -->
+	<text
+		x="100"
+		y="122"
+		text-anchor="middle"
+		font-family="'Space Grotesk', 'Atkinson', ui-sans-serif, system-ui, sans-serif"
+		font-size="72"
+		font-weight="600"
+		fill="#ffffff"
+		>AK</text
+	>
+</svg>

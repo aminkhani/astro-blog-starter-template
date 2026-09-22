@@ -24,7 +24,7 @@ const posts = (await getCollection('blog'))
 		<main>
 			<section class="hero">
 				<div class="hero-copy">
-					<p class="eyebrow">Security Engineer &middot; Django Developer</p>
+					<p class="eyebrow">Software Engineer &middot; Security Engineer</p>
 					<h1>Hi, I'm Amin Khani.</h1>
 					<p class="hero-lede">
 						I build secure backend systems with Django, then spend just as much time hardening,
@@ -107,9 +107,10 @@ const posts = (await getCollection('blog'))
 						<p class="eyebrow">Selected work</p>
 						<h2>Projects</h2>
 					</div>
+					<a class="btn btn-secondary" href="/projects">All projects &rarr;</a>
 				</div>
 				<div class="project-grid">
-					{PROJECTS.map((project) => <ProjectCard project={project} />)}
+					{PROJECTS.filter((p) => p.featured).map((project) => <ProjectCard project={project} />)}
 				</div>
 			</section>
 

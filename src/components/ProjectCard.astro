@@ -1,5 +1,6 @@
 ---
 import type { Project } from '../data/projects';
+import ProjectIcon from './ProjectIcon.astro';
 
 interface Props {
 	project: Project;
@@ -8,25 +9,35 @@ const { project } = Astro.props;
 ---
 
 <a class="card project-card" href={project.url} target="_blank" rel="noopener noreferrer">
-	<div class="project-top">
-		<span class="project-name">{project.name}</span>
-		{project.status && <span class="status">{project.status}</span>}
+	<ProjectIcon icon={project.icon} from={project.from} to={project.to} size="lg" />
+	<div class="project-body">
+		<div class="project-top">
+			<span class="project-name">{project.name}</span>
+			{project.status && <span class="status">{project.status}</span>}
+		</div>
+		<p class="project-desc">{project.description}</p>
+		<div class="project-tags">
+			{project.tags.map((t) => <span class="tag">{t}</span>)}
+		</div>
+		<span class="project-link">View on GitHub &rarr;</span>
 	</div>
-	<p class="project-desc">{project.description}</p>
-	<div class="project-tags">
-		{project.tags.map((t) => <span class="tag">{t}</span>)}
-	</div>
-	<span class="project-link">View on GitHub &rarr;</span>
 </a>
 
 <style>
 	.project-card {
 		display: flex;
 		flex-direction: column;
-		padding: 1.6em;
+		padding: 0;
+		overflow: hidden;
 		text-decoration: none;
 		color: inherit;
 		height: 100%;
+	}
+	.project-body {
+		display: flex;
+		flex-direction: column;
+		padding: 1.6em;
+		flex-grow: 1;
 	}
 	.project-top {
 		display: flex;
@@ -40,16 +51,6 @@ const { project } = Astro.props;
 		font-weight: 600;
 		font-size: 1.15em;
 		color: var(--ink);
-	}
-	.status {
-		font-family: var(--font-mono);
-		font-size: 0.72em;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
-		color: var(--teal);
-		background: var(--teal-soft);
-		padding: 0.2em 0.55em;
-		border-radius: 999px;
 	}
 	.project-desc {
 		color: var(--muted);

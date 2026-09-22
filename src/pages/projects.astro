@@ -1,0 +1,103 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { SITE_TITLE } from '../consts';
+import { PROJECTS } from '../data/projects';
+
+const title = `Projects — ${SITE_TITLE}`;
+const description =
+	"A collection of Amin Khani's open-source work — security tooling, backend APIs, bots, and learning repos.";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="page-header">
+				<p class="eyebrow">github.com/aminkhani</p>
+				<h1>Projects</h1>
+				<p class="lede">
+					Security tooling, Django backends, and a few things built for fun — pulled straight
+					from my GitHub. Click any card to see the code.
+				</p>
+			</section>
+
+			<section class="section projects-section">
+				<div class="project-grid">
+					{PROJECTS.map((project) => <ProjectCard project={project} />)}
+				</div>
+			</section>
+
+			<section class="section cta-section">
+				<div class="cta card">
+					<div>
+						<h2>More on GitHub</h2>
+						<p>
+							These are the highlights — there's more (experiments, forks, and learning repos)
+							on my profile.
+						</p>
+					</div>
+					<a class="btn btn-primary" href="https://github.com/aminkhani" target="_blank" rel="noopener noreferrer"
+						>View GitHub profile &rarr;</a
+					>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		padding: 3.5em 0 1em 0;
+		max-width: 640px;
+	}
+	.page-header h1 {
+		margin: 0.3em 0 0.4em 0;
+		font-size: 2.6em;
+	}
+	.lede {
+		color: var(--muted);
+		font-size: 1.05em;
+	}
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5em;
+	}
+	.cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5em;
+		flex-wrap: wrap;
+		padding: 2.5em;
+		background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+	}
+	.cta h2 {
+		margin-bottom: 0.3em;
+	}
+	.cta p {
+		margin: 0;
+		color: var(--muted);
+		max-width: 46ch;
+	}
+	@media (max-width: 640px) {
+		.page-header h1 {
+			font-size: 2.1em;
+		}
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+		.cta {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+</style>
