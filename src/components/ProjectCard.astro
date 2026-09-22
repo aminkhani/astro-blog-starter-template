@@ -9,7 +9,13 @@ const { project } = Astro.props;
 ---
 
 <a class="card project-card" href={project.url} target="_blank" rel="noopener noreferrer">
-	<ProjectIcon icon={project.icon} from={project.from} to={project.to} size="lg" />
+	{project.heroImage ? (
+		<div class="project-photo">
+			<img src={project.heroImage} alt={`${project.name} cover`} width={960} height={540} loading="lazy" />
+		</div>
+	) : (
+		<ProjectIcon icon={project.icon} from={project.from} to={project.to} size="lg" />
+	)}
 	<div class="project-body">
 		<div class="project-top">
 			<span class="project-name">{project.name}</span>
@@ -32,6 +38,24 @@ const { project } = Astro.props;
 		text-decoration: none;
 		color: inherit;
 		height: 100%;
+	}
+	.project-photo {
+		flex-shrink: 0;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+		border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+		box-shadow: var(--shadow-sm);
+	}
+	.project-photo img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s ease;
+	}
+	.project-card:hover .project-photo img {
+		transform: scale(1.04);
 	}
 	.project-body {
 		display: flex;

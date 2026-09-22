@@ -8,10 +8,12 @@ export interface Project {
 	status?: string;
 	language?: string;
 	icon: 'shield' | 'blog' | 'bot' | 'helm' | 'brain' | 'recipe';
-	from: string;
+	heroImage?: string;
+    from: string;
 	to: string;
 	featured?: boolean;
 }
+
 
 export const PROJECTS: Project[] = [
 	{
@@ -23,6 +25,7 @@ export const PROJECTS: Project[] = [
 		status: 'Active',
 		language: 'Shell',
 		icon: 'shield',
+		heroImage: '/covers/secap.jpg',
 		from: '#1e4fd8',
 		to: '#0c8f8d',
 		featured: true,
@@ -36,6 +39,7 @@ export const PROJECTS: Project[] = [
 		status: 'Active',
 		language: 'Astro',
 		icon: 'blog',
+		heroImage: '/covers/resume-blog.jpg',
 		from: '#7c3aed',
 		to: '#1e4fd8',
 		featured: true,
@@ -49,6 +53,7 @@ export const PROJECTS: Project[] = [
 		status: 'Active',
 		language: 'TypeScript',
 		icon: 'bot',
+		heroImage: '/covers/caloriban.jpg',
 		from: '#0c8f8d',
 		to: '#22c55e',
 		featured: true,
@@ -61,6 +66,7 @@ export const PROJECTS: Project[] = [
 		url: 'https://github.com/aminkhani/recipe-app-api',
 		language: 'Python',
 		icon: 'recipe',
+		heroImage: '/covers/recipe-app-api.jpg',
 		from: '#e08b2f',
 		to: '#c4382f',
 	},
@@ -72,6 +78,7 @@ export const PROJECTS: Project[] = [
 		url: 'https://github.com/aminkhani/kubernetes',
 		language: 'Shell',
 		icon: 'helm',
+		heroImage: '/covers/kubernetes-notes.jpg',
 		from: '#1e4fd8',
 		to: '#5b8def',
 	},
@@ -83,6 +90,7 @@ export const PROJECTS: Project[] = [
 		url: 'https://github.com/aminkhani/Deep-RL',
 		language: 'Jupyter Notebook',
 		icon: 'brain',
+		heroImage: '/covers/deep-rl.jpg',
 		from: '#7c3aed',
 		to: '#c4382f',
 	},
