@@ -46,6 +46,7 @@ const posts = (await getCollection('blog'))
 						<p><span class="prompt">$</span> whoami</p>
 						<p class="out">&gt; Amin Khani — Software Engineer</p>
 						<p><span class="prompt">$</span> focus --list</p>
+						<p class="out">&gt; DevOps Engineer </p>
 						<p class="out">&gt; Django &amp; DRF backend systems</p>
 						<p class="out">&gt; OS hardening (CIS / DISA STIG)</p>
 						<p class="out">&gt; Vulnerability &amp; patch management</p>
@@ -56,24 +57,70 @@ const posts = (await getCollection('blog'))
 				</div>
 			</section>
 
-			<section class="currently card">
-				<div class="currently-item">
-					<span class="label">Currently</span>
-					<span class="value">Security Solutions Deployment Engineer @ APS-Co</span>
-				</div>
-				<div class="currently-item">
-					<span class="label">Building</span>
-					<span class="value"
-						><a href="https://github.com/aminkhani/secap" target="_blank" rel="noopener noreferrer"
-							>SECAP</a
-						> — cross-platform hardening framework</span
-					>
-				</div>
-				<div class="currently-item">
-					<span class="label">Writing about</span>
-					<span class="value">Django security, hardening, DevSecOps</span>
-				</div>
-			</section>
+			<section class="currently">
+                <div class="currently-header">
+                    <div>
+                        <p class="eyebrow">What I'm up to</p>
+                        <h2>Currently</h2>
+                    </div>
+                    <span class="status-badge">
+                        <span class="status-dot"></span>
+                        Active
+                    </span>
+                </div>
+
+                <div class="currently-grid">
+                    <div class="currently-item">
+                        <div class="item-icon">💼</div>
+                        <div class="item-content">
+                            <span class="label">Working as</span>
+                            <span class="value">Security Solutions Deployment Engineer</span>
+                            <span class="meta">APS-Co</span>
+                        </div>
+                    </div>
+
+                    <div class="currently-item">
+                        <div class="item-icon">🛡️</div>
+                        <div class="item-content">
+                            <span class="label">Building</span>
+                            <a
+                                class="value link"
+                                href="https://github.com/aminkhani/secap"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                SECAP ↗
+                            </a>
+                            <span class="meta">Cross-platform hardening framework</span>
+                        </div>
+                    </div>
+
+                    <div class="currently-item">
+                        <div class="item-icon">✍️</div>
+                        <div class="item-content">
+                            <span class="label">Writing about</span>
+                            <span class="value">Security & DevSecOps</span>
+                            <span class="meta">Django · Hardening · DevSecOps</span>
+                        </div>
+                    </div>
+
+                    <div class="currently-item">
+                        <div class="item-icon">📚</div>
+                        <div class="item-content">
+                            <span class="label">Currently learning</span>
+                            <a
+                                class="value link"
+                                href="https://academy.arvancloud.ir/#roadmap"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                DevOps Engineering ↗
+                            </a>
+                            <span class="meta">Arvan Academy</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 			<section class="section">
 				<div class="section-head">
@@ -228,28 +275,162 @@ const posts = (await getCollection('blog'))
 	}
 
 	.currently {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 2em;
-		padding: 1.4em 1.8em;
-		margin-bottom: 1em;
-	}
-	.currently-item {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25em;
-	}
-	.currently-item .label {
-		font-family: var(--font-mono);
-		font-size: 0.72em;
-		text-transform: uppercase;
-		letter-spacing: 0.07em;
-		color: var(--muted);
-	}
-	.currently-item .value {
-		font-size: 0.95em;
-		color: var(--ink-soft);
-	}
+        margin-bottom: 1em;
+        padding: 1.5em;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+    }
+
+    .currently-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1em;
+        margin-bottom: 1.25em;
+    }
+
+    .currently-header .eyebrow {
+        margin-bottom: 0.2em;
+    }
+
+    .currently-header h2 {
+        margin: 0;
+        font-size: 1.35em;
+    }
+
+    /* Active badge */
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45em;
+        padding: 0.4em 0.7em;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 0.72em;
+        font-weight: 600;
+    }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 0 3px rgba(0, 168, 142, 0.12);
+    }
+
+    /* Cards */
+
+    .currently-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8em;
+    }
+
+    .currently-item {
+        display: flex;
+        gap: 0.8em;
+        min-width: 0;
+        padding: 1em;
+        border: 1px solid var(--border);
+        border-radius: calc(var(--radius-lg) - 4px);
+        background: var(--bg);
+        transition:
+            transform 0.2s ease,
+            border-color 0.2s ease,
+            background 0.2s ease;
+    }
+
+    .currently-item:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        background: var(--surface);
+    }
+
+    .item-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        width: 2.2em;
+        height: 2.2em;
+
+        border-radius: 0.6em;
+        background: var(--accent-soft);
+
+        font-size: 1em;
+    }
+
+    .item-content {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        gap: 0.2em;
+    }
+
+    .item-content .label {
+        font-family: var(--font-mono);
+        font-size: 0.68em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+    }
+
+    .item-content .value {
+        font-size: 0.9em;
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1.35;
+    }
+
+    .item-content .meta {
+        font-size: 0.75em;
+        color: var(--muted);
+        line-height: 1.35;
+    }
+
+    .item-content .link {
+        text-decoration: none;
+        color: var(--accent);
+    }
+
+    .item-content .link:hover {
+        text-decoration: underline;
+    }
+
+    /* Tablet */
+
+    @media (max-width: 1000px) {
+        .currently-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 640px) {
+        .currently {
+            padding: 1.2em;
+        }
+
+        .currently-header {
+            align-items: flex-start;
+        }
+
+        .currently-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .currently-item {
+            padding: 0.9em;
+        }
+    }
 
 	.post-grid {
 		display: grid;
