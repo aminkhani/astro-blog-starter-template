@@ -2,7 +2,7 @@
 title: "Hardening Django in Production: A Practical Checklist"
 description: "A practical, security-first checklist for locking down Django applications before they hit production."
 pubDate: "Aug 16 2026"
-heroImage: "/blog-placeholder-1.jpg"
+heroImage: "/hardening.jpeg"
 tags: ["Django", "Hardening", "DevSecOps"]
 ---
 
