@@ -17,6 +17,8 @@
 		"@astrojs/rss": "4.0.14",
 		"@astrojs/sitemap": "3.6.1",
 		"astro": "5.16.9",
+		"astro-mermaid": "^2.1.0",
+		"mermaid": "^11.17.2",
 		"typescript": "5.9.3"
 	},
 	"devDependencies": {
