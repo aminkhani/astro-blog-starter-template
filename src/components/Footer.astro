@@ -1,13 +1,16 @@
 ---
 import { SITE_TITLE } from '../consts';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const today = new Date();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer>
 	<div class="footer-inner">
 		<div class="footer-left">
 			<span class="footer-brand">{SITE_TITLE}</span>
-			<span class="footer-copy">&copy; {today.getFullYear()} &middot; Built with Astro on Cloudflare Workers</span>
+			<span class="footer-copy">&copy; {today.getFullYear()} &middot; {t('footer.built')}</span>
 		</div>
 		<div class="social-links">
 			<a href="https://linkedin.com/in/aminkhanidev" target="_blank" rel="noopener noreferrer">

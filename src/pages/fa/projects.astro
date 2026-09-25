@@ -1,0 +1,103 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { SITE_TITLE } from '../../consts';
+import { PROJECTS } from '../../data/projects';
+
+const title = `پروژه‌ها — ${SITE_TITLE}`;
+const description =
+	'مجموعه‌ای از کارهای متن‌باز امین خانی — ابزارهای امنیتی، APIهای بک‌اند، ربات‌ها و مخازن آموزشی.';
+---
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="page-header">
+				<p class="eyebrow">github.com/aminkhani</p>
+				<h1>پروژه‌ها</h1>
+				<p class="lede">
+					ابزارهای امنیتی، بک‌اندهای جنگو، و چند چیز که فقط برای تفریح ساخته‌ام — مستقیم از
+					گیت‌هاب من. برای دیدن کد، روی هر کارت کلیک کنید.
+				</p>
+			</section>
+
+			<section class="section projects-section">
+				<div class="project-grid">
+					{PROJECTS.map((project) => <ProjectCard project={project} />)}
+				</div>
+			</section>
+
+			<section class="section cta-section">
+				<div class="cta card">
+					<div>
+						<h2>بیشتر در گیت‌هاب</h2>
+						<p>
+							این‌ها منتخب‌ها هستند — موارد بیشتری (آزمایش‌ها، فورک‌ها و مخازن آموزشی) در
+							پروفایل من موجود است.
+						</p>
+					</div>
+					<a class="btn btn-primary" href="https://github.com/aminkhani" target="_blank" rel="noopener noreferrer"
+						>مشاهده پروفایل گیت‌هاب ←</a
+					>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-header {
+		padding: 3.5em 0 1em 0;
+		max-width: 640px;
+	}
+	.page-header h1 {
+		margin: 0.3em 0 0.4em 0;
+		font-size: 2.6em;
+	}
+	.lede {
+		color: var(--muted);
+		font-size: 1.05em;
+	}
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5em;
+	}
+	.cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5em;
+		flex-wrap: wrap;
+		padding: 2.5em;
+		background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+	}
+	.cta h2 {
+		margin-bottom: 0.3em;
+	}
+	.cta p {
+		margin: 0;
+		color: var(--muted);
+		max-width: 46ch;
+	}
+	@media (max-width: 640px) {
+		.page-header h1 {
+			font-size: 2.1em;
+		}
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+		.cta {
+			flex-direction: column;
+			align-items: flex-end;
+		}
+	}
+</style>

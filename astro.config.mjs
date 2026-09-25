@@ -9,6 +9,13 @@ import cloudflare from "@astrojs/cloudflare";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://aminkhani.ir",
+	i18n: {
+		defaultLocale: "en",
+		locales: ["en", "fa"],
+		routing: {
+			prefixDefaultLocale: false,
+		},
+	},
 	integrations: [
 		mermaid({
 			theme: "forest",

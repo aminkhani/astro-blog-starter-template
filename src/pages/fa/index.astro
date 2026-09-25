@@ -1,0 +1,556 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import PostCard from "../../components/PostCard.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { SITE_TITLE } from "../../consts";
+import { PROJECTS } from "../../data/projects";
+import { getCollection } from "astro:content";
+import { getReadingTime } from "../../utils/readingTime";
+
+const SITE_DESCRIPTION_FA =
+    "مهندس نرم‌افزار، متخصص توسعه بک‌اند با جنگو و مهندسی امنیت — سخت‌سازی، مدیریت آسیب‌پذیری و زیرساخت امن.";
+
+const posts = (await getCollection("blog"))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
+---
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION_FA} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">
+                        مهندس نرم‌افزار · مهندس امنیت
+                    </p>
+                    <h1>سلام، من امین خانی هستم.</h1>
+                    <p class="hero-lede">
+                        من سیستم‌های بک‌اند امن را با جنگو می‌سازم و به همان اندازه
+                        وقت می‌گذارم تا آن‌ها را سخت‌سازی، پایش و از آن‌ها دفاع کنم.
+                        در حال حاضر مشغول استقرار پلتفرم‌های سازمانی EDR/XDR هستم و
+                        درباره جنبه‌های عملی DevSecOps می‌نویسم.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="/fa/blog">مطالعه وبلاگ</a
+                        >
+                        <a class="btn btn-secondary" href="/fa/about">درباره من</a>
+                    </div>
+                </div>
+                <div
+                    class="console"
+                    role="img"
+                    aria-label="Terminal-style summary of Amin Khani's engineering focus"
+                >
+                    <div class="console-bar">
+                        <span class="dot red"></span><span class="dot yellow"
+                        ></span><span class="dot green"></span>
+                        <span class="console-title">profile.sh</span>
+                    </div>
+                    <div class="console-body">
+                        <p><span class="prompt">$</span> whoami</p>
+                        <p class="out">&gt; Amin Khani — Software Engineer . 3 yrs</p>
+                        <p><span class="prompt">$</span> focus --list</p>
+                        <p class="out">&gt; Backend &amp; DevOps engineering</p>
+                        <p class="out">
+                            &gt; Linux &amp; infrastructure automation
+                        </p>
+                        <p class="out">
+                            &gt; OS hardening &amp; security compliance
+                        </p>
+                        <p class="out">
+                            &gt; Vulnerability &amp; patch management
+                        </p>
+                        <p><span class="prompt">$</span> build --what</p>
+                        <p class="out">
+                            &gt; Secure, automated, maintainable systems
+                        </p>
+                        <p><span class="prompt">$</span> status --check</p>
+                        <p class="out ok">
+                            &gt; security: hardened <span class="check"
+                                >&#10003;</span>
+                        </p>
+                        <p class="out ok">
+                            &gt; automation: enabled <span class="check"
+                                >&#10003;</span>
+                        </p>
+                        <p class="out ok">
+                            &gt; systems: monitored <span class="check"
+                                >&#10003;</span>
+                        </p>
+                        <p class="cursor">
+                            <span class="prompt">$</span>
+                            <span class="blink">&#9608;</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="currently">
+                <div class="currently-header">
+                    <div>
+                        <p class="eyebrow">این روزها</p>
+                        <h2>مشغول چه هستم</h2>
+                    </div>
+                    <span class="status-badge">
+                        <span class="status-dot"></span>
+                        فعال
+                    </span>
+                </div>
+
+                <div class="currently-grid">
+                    <div class="currently-item">
+                        <div class="item-icon">💼</div>
+                        <div class="item-content">
+                            <span class="label">در حال کار به‌عنوان</span>
+                            <span class="value"
+                                >مهندس استقرار راهکارهای امنیتی</span
+                            >
+                            <span class="meta">APS-Co</span>
+                        </div>
+                    </div>
+
+                    <div class="currently-item">
+                        <div class="item-icon">🛡️</div>
+                        <div class="item-content">
+                            <span class="label">در حال ساخت</span>
+                            <a
+                                class="value link"
+                                href="https://github.com/aminkhani/secap"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                SECAP ↗
+                            </a>
+                            <span class="meta"
+                                >فریم‌ورک سخت‌سازی چندسکویی</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="currently-item">
+                        <div class="item-icon">✍️</div>
+                        <div class="item-content">
+                            <span class="label">در حال نوشتن درباره</span>
+                            <span class="value">امنیت و DevSecOps</span>
+                            <span class="meta"
+                                >جنگو · سخت‌سازی · DevSecOps</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="currently-item">
+                        <div class="item-icon">📚</div>
+                        <div class="item-content">
+                            <span class="label">در حال یادگیری</span>
+                            <a
+                                class="value link"
+                                href="https://academy.arvancloud.ir/#roadmap"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                مهندسی DevOps ↗
+                            </a>
+                            <span class="meta">آکادمی آروان</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">آخرین نوشته‌ها</p>
+                        <h2>از وبلاگ</h2>
+                    </div>
+                    <a class="btn btn-secondary" href="/fa/blog"
+                        >همه نوشته‌ها &larr;</a
+                    >
+                </div>
+                <p class="lang-note">{"در حال حاضر نوشته‌های وبلاگ فقط به انگلیسی موجودند."}</p>
+                <div class="post-grid">
+                    {
+                        posts.map((post, i) => (
+                            <PostCard
+                                href={`/blog/${post.id}/`}
+                                title={post.data.title}
+                                description={post.data.description}
+                                pubDate={post.data.pubDate}
+                                heroImage={post.data.heroImage}
+                                readingTime={getReadingTime(post.body || "")}
+                                tags={post.data.tags}
+                            />
+                        ))
+                    }
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">منتخب کارها</p>
+                        <h2>پروژه‌ها</h2>
+                    </div>
+                    <a class="btn btn-secondary" href="/fa/projects"
+                        >همه پروژه‌ها &larr;</a
+                    >
+                </div>
+                <div class="project-grid">
+                    {
+                        PROJECTS.filter((p) => p.featured).map((project) => (
+                            <ProjectCard project={project} />
+                        ))
+                    }
+                </div>
+            </section>
+
+            <section class="section cta-section">
+                <div class="cta card">
+                    <div>
+                        <h2>بیایید درباره امنیت و سیستم‌های بک‌اند صحبت کنیم</h2>
+                        <p>
+                            همیشه خوشحال می‌شوم درباره معماری بک‌اند امن،
+                            خودکارسازی سخت‌سازی، یا DevSecOps گفتگو کنم.
+                        </p>
+                    </div>
+                    <a
+                        class="btn btn-primary"
+                        href="mailto:aminkhani.dev@gmail.com">در تماس باشید</a
+                    >
+                </div>
+            </section>
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    .lang-note {
+        font-size: 0.85em;
+        color: var(--muted);
+        margin: -1.2em 0 1.2em 0;
+    }
+    .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 3em;
+        align-items: center;
+        padding: 4.5em 0 3em 0;
+    }
+    .hero h1 {
+        font-size: 3em;
+        margin: 0.3em 0 0.5em 0;
+    }
+    .hero-lede {
+        font-size: 1.1em;
+        color: var(--muted);
+        max-width: 46ch;
+    }
+    .hero-actions {
+        display: flex;
+        gap: 0.9em;
+        margin-top: 1.6em;
+        flex-wrap: wrap;
+    }
+
+    .console {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        overflow: hidden;
+    }
+    .console-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.4em;
+        padding: 0.75em 1em;
+        border-bottom: 1px solid var(--border);
+        background: var(--bg);
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .dot.red {
+        background: #ff5f57;
+    }
+    .dot.yellow {
+        background: #febc2e;
+    }
+    .dot.green {
+        background: #28c840;
+    }
+    .console-title {
+        margin-left: 0.5em;
+        font-family: var(--font-mono);
+        font-size: 0.78em;
+        color: var(--muted);
+    }
+    .console-body {
+        padding: 1.4em 1.3em;
+        font-family: var(--font-mono);
+        font-size: 0.88em;
+        line-height: 1.9;
+    }
+    .console-body p {
+        margin: 0;
+        color: var(--ink-soft);
+    }
+    .console-body .prompt {
+        color: var(--teal);
+        margin-right: 0.4em;
+    }
+    .console-body .out {
+        color: var(--muted);
+        padding-left: 1.2em;
+    }
+    .console-body .ok {
+        color: var(--teal);
+    }
+    .check {
+        color: var(--teal);
+    }
+    .blink {
+        display: inline-block;
+        width: 0.55em;
+        height: 1em;
+        background: var(--accent);
+        animation: blink 1.1s steps(1) infinite;
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .currently {
+        margin-bottom: 1em;
+        padding: 1.5em;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+    }
+
+    .currently-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1em;
+        margin-bottom: 1.25em;
+    }
+
+    .currently-header .eyebrow {
+        margin-bottom: 0.2em;
+    }
+
+    .currently-header h2 {
+        margin: 0;
+        font-size: 1.35em;
+    }
+
+    /* Active badge */
+
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45em;
+        padding: 0.4em 0.7em;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 0.72em;
+        font-weight: 600;
+    }
+
+    .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 0 3px rgba(0, 168, 142, 0.12);
+    }
+
+    /* Cards */
+
+    .currently-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8em;
+    }
+
+    .currently-item {
+        display: flex;
+        gap: 0.8em;
+        min-width: 0;
+        padding: 1em;
+        border: 1px solid var(--border);
+        border-radius: calc(var(--radius-lg) - 4px);
+        background: var(--bg);
+        transition:
+            transform 0.2s ease,
+            border-color 0.2s ease,
+            background 0.2s ease;
+    }
+
+    .currently-item:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        background: var(--surface);
+    }
+
+    .item-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        width: 2.2em;
+        height: 2.2em;
+
+        border-radius: 0.6em;
+        background: var(--accent-soft);
+
+        font-size: 1em;
+    }
+
+    .item-content {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        gap: 0.2em;
+    }
+
+    .item-content .label {
+        font-family: var(--font-mono);
+        font-size: 0.68em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+    }
+
+    .item-content .value {
+        font-size: 0.9em;
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1.35;
+    }
+
+    .item-content .meta {
+        font-size: 0.75em;
+        color: var(--muted);
+        line-height: 1.35;
+    }
+
+    .item-content .link {
+        text-decoration: none;
+        color: var(--accent);
+    }
+
+    .item-content .link:hover {
+        text-decoration: underline;
+    }
+
+    /* Tablet */
+
+    @media (max-width: 1000px) {
+        .currently-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 640px) {
+        .currently {
+            padding: 1.2em;
+        }
+
+        .currently-header {
+            align-items: flex-start;
+        }
+
+        .currently-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .currently-item {
+            padding: 0.9em;
+        }
+    }
+
+    .post-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5em;
+    }
+    .post-grid > :global(.featured) {
+        grid-column: span 3;
+    }
+    .post-grid > :global(.featured) :global(.post-image) {
+        aspect-ratio: 21 / 8;
+    }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5em;
+    }
+
+    .cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5em;
+        flex-wrap: wrap;
+        padding: 2.5em;
+        background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+    }
+    .cta h2 {
+        margin-bottom: 0.3em;
+    }
+    .cta p {
+        margin: 0;
+        color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+        .hero {
+            grid-template-columns: 1fr;
+            padding-top: 2.5em;
+        }
+        .post-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+        .post-grid > :global(.featured) {
+            grid-column: span 2;
+        }
+    }
+    @media (max-width: 640px) {
+        .hero h1 {
+            font-size: 2.1em;
+        }
+        .post-grid,
+        .project-grid {
+            grid-template-columns: 1fr;
+        }
+        .post-grid > :global(.featured) {
+            grid-column: span 1;
+        }
+        .cta {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>

@@ -1,11 +1,15 @@
 ---
 import type { Project } from '../data/projects';
 import ProjectIcon from './ProjectIcon.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
 	project: Project;
 }
 const { project } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const description = lang === 'fa' && project.descriptionFa ? project.descriptionFa : project.description;
 ---
 
 <a class="card project-card" href={project.url} target="_blank" rel="noopener noreferrer">
@@ -21,11 +25,11 @@ const { project } = Astro.props;
 			<span class="project-name">{project.name}</span>
 			{project.status && <span class="status">{project.status}</span>}
 		</div>
-		<p class="project-desc">{project.description}</p>
+		<p class="project-desc">{description}</p>
 		<div class="project-tags">
-			{project.tags.map((t) => <span class="tag">{t}</span>)}
+			{project.tags.map((tag) => <span class="tag">{tag}</span>)}
 		</div>
-		<span class="project-link">View on GitHub &rarr;</span>
+		<span class="project-link">{t('project.viewGithub')}</span>
 	</div>
 </a>
 

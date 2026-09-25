@@ -3,6 +3,7 @@
 export interface Project {
 	name: string;
 	description: string;
+	descriptionFa?: string;
 	tags: string[];
 	url: string;
 	status?: string;
@@ -20,6 +21,8 @@ export const PROJECTS: Project[] = [
 		name: 'SECAP',
 		description:
 			'Security Compliance & Audit Platform — open-source, cross-platform system hardening framework that automates OpenSCAP/Nessus audits and guided remediation for Linux & Windows fleets, aligned with CIS Benchmarks and DISA STIG.',
+		descriptionFa:
+			'پلتفرم انطباق و ممیزی امنیتی — یک فریم‌ورک متن‌باز و چندسکویی برای سخت‌سازی سیستم که ممیزی‌های OpenSCAP/Nessus و رفع‌اشکال هدایت‌شده را برای زیرساخت‌های لینوکس و ویندوز، مطابق با استانداردهای CIS و DISA STIG، خودکار می‌کند.',
 		tags: ['Python', 'Django', 'Docker', 'Celery'],
 		url: 'https://github.com/aminkhani/secap',
 		status: 'Active',
@@ -34,6 +37,8 @@ export const PROJECTS: Project[] = [
 		name: 'Resume Blog',
 		description:
 			'Personal site and writing on Django backend development, security engineering, and DevSecOps — built with Astro and deployed on Cloudflare Workers.',
+		descriptionFa:
+			'وب‌سایت شخصی و نوشته‌هایی درباره توسعه بک‌اند با جنگو، مهندسی امنیت و DevSecOps — ساخته‌شده با Astro و مستقر روی Cloudflare Workers.',
 		tags: ['Astro', 'Cloudflare Workers'],
 		url: 'https://github.com/aminkhani/astro-blog-starter-template',
 		status: 'Active',
@@ -48,6 +53,8 @@ export const PROJECTS: Project[] = [
 		name: 'Caloriban',
 		description:
 			"A Persian-language Telegram bot that collects a user's stats \u2014 name, weight, height, age, activity level \u2014 then calculates daily calorie needs (BMR + TDEE) and generates a personalized diet plan.",
+		descriptionFa:
+			'یک ربات تلگرام فارسی‌زبان که اطلاعات کاربر — نام، وزن، قد، سن، سطح فعالیت — را جمع‌آوری کرده، سپس نیاز کالری روزانه (BMR + TDEE) را محاسبه و یک برنامه غذایی شخصی‌سازی‌شده تولید می‌کند.',
 		tags: ['TypeScript', 'Telegram Bot', 'Cloudflare AI'],
 		url: 'https://github.com/aminkhani/caloriban',
 		status: 'Active',

@@ -390,3 +390,44 @@ hr {
 		padding: 2.75em 0;
 	}
 }
+
+/* ---------------------------------------------------------------- */
+/* RTL / Persian support                                             */
+/* ---------------------------------------------------------------- */
+html[dir="rtl"] body {
+	text-align: right;
+	font-family: "Vazirmatn", var(--font-body);
+}
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6 {
+	font-family: "Vazirmatn", var(--font-display);
+}
+/* Numbers, code, and terminal-style widgets stay left-to-right even on RTL pages */
+html[dir="rtl"] code,
+html[dir="rtl"] pre,
+html[dir="rtl"] .console,
+html[dir="rtl"] .meta-row time {
+	direction: ltr;
+}
+html[dir="rtl"] .console {
+	text-align: left;
+}
+html[dir="rtl"] .prose blockquote {
+	border-left: none;
+	border-right: 3px solid var(--accent);
+	padding: 0.2em 1.2em 0.2em 0;
+}
+html[dir="rtl"] .prose ul,
+html[dir="rtl"] .prose ol,
+html[dir="rtl"] .timeline-points {
+	padding-left: 0;
+	padding-right: 1.2em;
+}
+html[dir="rtl"] .about-hero .status-pip {
+	right: auto;
+	left: 10px;
+}

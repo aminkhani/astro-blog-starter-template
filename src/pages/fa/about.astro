@@ -1,0 +1,508 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ProjectIcon from '../../components/ProjectIcon.astro';
+import { SITE_TITLE } from '../../consts';
+
+const title = `درباره من — ${SITE_TITLE}`;
+const description = 'مهندس نرم‌افزار، متخصص توسعه بک‌اند با جنگو و مهندسی امنیت.';
+
+const timeline = [
+	{
+		when: '۲۰۲۴ — اکنون',
+		role: 'مهندس استقرار راهکارهای امنیتی',
+		org: 'اندیشه پردازان سپاهان (APS-Co)',
+		url: 'https://aps-co.net/',
+		current: true,
+		points: [
+			'استقرار و پیکربندی پلتفرم‌های امنیتی سازمانی — Kaspersky Next EDR Expert و XDR Expert — در محیط‌های مشتریانی که روی Docker و Kubernetes کار می‌کنند.',
+			'همکاری مستقیم با تیم‌های IT و امنیت مشتریان برای یکپارچه‌سازی ابزارهای جدید در زیرساخت‌های لینوکس، ویندوز و کانتینری موجود.',
+			'کمک به پیکربندی گردش‌کارهای SOC برای شناسایی تهدید، تحلیل بدافزار و تحلیل حوادث.',
+		],
+	},
+	{
+		when: '۲۰۲۲ — ۲۰۲۴',
+		role: 'مهندس نرم‌افزار',
+		org: 'شرکت فرداد',
+		url: 'https://fardaadco.ir/',
+		points: [
+			'طراحی و توسعه سرویس‌های بک‌اند امن با جنگو و Django REST Framework.',
+			'پیاده‌سازی گردش‌کارهای مدیریت وصله برای کاهش قرارگیری در معرض آسیب‌پذیری‌های شناخته‌شده.',
+			'انجام ارزیابی آسیب‌پذیری با استفاده از پایگاه‌های داده CVE و NVD و اعمال سیاست‌های سخت‌سازی مبتنی بر CIS Benchmark.',
+			'ساخت یک هندلر فایروال SSH که تلاش‌های دسترسی غیرمجاز را به‌طور چشمگیری کاهش داد.',
+		],
+	},
+	{
+		when: '۲۰۲۱ — ۲۰۲۴',
+		role: 'کارشناسی مهندسی کامپیوتر',
+		org: 'دانشگاه کاشان',
+		education: true,
+		points: [
+			'فارغ‌التحصیلی با معدل ۱۶ از ۲۰. پروژه کارشناسی روی تحلیل احساسات با استفاده از GAN نیمه‌نظارتی.',
+			'رتبه اول در یک درس اختیاری یادگیری تقویتی در مقطع کارشناسی ارشد.',
+		],
+	},
+];
+
+const skillGroups = [
+	{
+		label: 'بک‌اند و فریم‌ورک‌ها',
+		skills: ['Django', 'Django REST Framework', 'FastAPI', 'Django Channels', 'Celery', 'GeoDjango'],
+	},
+	{
+		label: 'پایگاه‌داده و کش',
+		skills: ['PostgreSQL', 'Redis', 'MongoDB', 'PostGIS'],
+	},
+	{
+		label: 'DevOps',
+		skills: ['Docker', 'Kubernetes', 'Ansible', 'Prometheus', 'Grafana'],
+	},
+	{
+		label: 'امنیت و شبکه',
+		skills: [
+			'مدیریت وصله و آسیب‌پذیری',
+			'سخت‌سازی سیستم‌عامل',
+			'تحلیل بدافزار',
+			'SOC Tier 1',
+			'LPIC-1',
+			'Network+',
+			'Security+',
+		],
+	},
+];
+---
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Hero -->
+			<section class="about-hero">
+				<div class="avatar-wrap">
+					<img src="/aminkhani.jpg" alt="Amin Khani" width="176" height="176" class="avatar" />
+					<span class="status-pip" title="در حال کار"></span>
+				</div>
+				<div class="hero-copy">
+					<p class="eyebrow">درباره من</p>
+					<h1>امین خانی</h1>
+					<p class="hero-lede">
+						من مهندس نرم‌افزاری هستم که در دو حوزه نزدیک به هم فعالیت می‌کنم:
+						<strong>توسعه بک‌اند با جنگو</strong> و <strong>مهندسی امنیت</strong>.
+						علاقه‌مندم سیستم‌های بک‌اندی بسازم که نه‌تنها کارآمد، بلکه سخت‌سازی‌شده،
+						پایش‌شده و در برابر تهدیدهای واقعی مقاوم باشند.
+					</p>
+					<div class="hero-actions">
+						<a class="btn btn-primary" href="mailto:aminkhani.dev@gmail.com">در تماس باشید</a>
+						<a class="btn btn-secondary" href="https://github.com/aminkhani" target="_blank" rel="noopener noreferrer"
+							>گیت‌هاب</a
+						>
+						<a class="btn btn-secondary" href="https://linkedin.com/in/aminkhanidev" target="_blank" rel="noopener noreferrer"
+							>لینکدین</a
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- What I do -->
+			<section class="section">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">کاری که انجام می‌دهم</p>
+						<h2>دو روی یک مسئله</h2>
+					</div>
+				</div>
+				<div class="focus-grid">
+					<div class="card focus-card">
+						<span class="focus-glyph" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="26" height="26"
+								><path
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M4 6h16M4 12h16M4 18h10"
+								></path></svg
+							>
+						</span>
+						<h3>مهندسی نرم‌افزار</h3>
+						<p>
+							سرویس‌های بک‌اند امن با جنگو و Django REST Framework — APIها، سیستم‌های بی‌درنگ
+							با Django Channels، پردازش پس‌زمینه با Celery، و ویژگی‌های مکان‌محور با GeoDjango.
+						</p>
+					</div>
+					<div class="card focus-card">
+						<span class="focus-glyph" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="26" height="26"
+								><path
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M12 3l7 3v6c0 5-3.1 8.3-7 9.5-3.9-1.2-7-4.5-7-9.5V6l7-3z"
+								></path><path
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M9 12l2 2 4-4"
+								></path></svg
+							>
+						</span>
+						<h3>مهندسی امنیت</h3>
+						<p>
+							سخت‌سازی سیستم‌عامل، مدیریت وصله و آسیب‌پذیری، تحلیل بدافزار، و شناسایی تهدید و
+							واکنش به حوادث به سبک SOC.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Timeline -->
+			<section class="section">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">تجربه و تحصیلات</p>
+						<h2>کجاها بوده‌ام</h2>
+					</div>
+				</div>
+				<ol class="timeline">
+					{timeline.map((item) => (
+						<li class={`timeline-item ${item.current ? 'is-current' : ''}`}>
+							<div class="timeline-marker">
+								<span class="timeline-dot"></span>
+							</div>
+							<div class="timeline-content card">
+								<span class="timeline-when">{item.when}</span>
+								<h3 class="timeline-role">
+									<span>{item.role}</span>
+									{item.current && <span class="status">فعلی</span>}
+								</h3>
+								<p class="timeline-org">
+									{item.education ? '🎓 ' : '💼 '}
+									{item.url ? (
+										<a href={item.url} target="_blank" rel="noopener noreferrer">{item.org}</a>
+									) : (
+										item.org
+									)}
+								</p>
+								<ul class="timeline-points">
+									{item.points.map((p) => <li>{p}</li>)}
+								</ul>
+							</div>
+						</li>
+					))}
+				</ol>
+			</section>
+
+			<!-- Skills -->
+			<section class="section">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">جعبه‌ابزار</p>
+						<h2>مهارت‌ها</h2>
+					</div>
+				</div>
+				<div class="skills-grid">
+					{skillGroups.map((group) => (
+						<div class="card skills-card">
+							<h3>{group.label}</h3>
+							<div class="skills-badges">
+								{group.skills.map((s) => <span class="tag">{s}</span>)}
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Open source -->
+			<section class="section">
+				<div class="section-head">
+					<div>
+						<p class="eyebrow">متن‌باز</p>
+						<h2>چه چیزی را نگهداری می‌کنم</h2>
+					</div>
+				</div>
+				<a class="card oss-card" href="https://github.com/aminkhani/secap" target="_blank" rel="noopener noreferrer">
+					<ProjectIcon icon="shield" from="#1e4fd8" to="#0c8f8d" size="sm" />
+					<div class="oss-body">
+						<h3>SECAP</h3>
+						<p>
+							یک فریم‌ورک خودکار چندسکویی برای ممیزی و اعمال خط‌مبنای امنیتی روی ویندوز و لینوکس،
+							مطابق با استانداردهای CIS Benchmark و DISA STIG. این ابزار شناسایی پیکربندی‌های
+							نادرست و رفع تنظیمات پیش‌فرض ناامن را در هر دو سیستم‌عامل خودکار می‌کند.
+						</p>
+						<span class="project-link">مشاهده در گیت‌هاب ←</span>
+					</div>
+				</a>
+			</section>
+
+			<!-- Contact -->
+			<section class="section cta-section">
+				<div class="cta card">
+					<div>
+						<h2>بیایید درباره امنیت و سیستم‌های بک‌اند صحبت کنیم</h2>
+						<p>
+							همیشه خوشحال می‌شوم درباره معماری بک‌اند امن، خودکارسازی سخت‌سازی، یا DevSecOps
+							گفتگو کنم. از طریق ایمیل با من در ارتباط باشید یا من را در گیت‌هاب و لینکدین پیدا کنید.
+						</p>
+					</div>
+					<a class="btn btn-primary" href="mailto:aminkhani.dev@gmail.com">در تماس باشید</a>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		padding-bottom: 3em;
+	}
+
+	/* Hero */
+	.about-hero {
+		display: flex;
+		align-items: center;
+		gap: 2.5em;
+		padding: 4em 0 1em 0;
+	}
+	.avatar-wrap {
+		position: relative;
+		flex-shrink: 0;
+	}
+	.avatar {
+		display: block;
+		width: 176px;
+		height: 176px;
+		border-radius: 50%;
+		box-shadow: var(--shadow-lg);
+		border: 3px solid var(--surface);
+	}
+	.status-pip {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: var(--teal);
+		border: 3px solid var(--bg);
+	}
+	.hero-copy h1 {
+		font-size: 2.75em;
+		margin: 0.2em 0 0.5em 0;
+	}
+	.hero-lede {
+		color: var(--muted);
+		font-size: 1.05em;
+		max-width: 60ch;
+	}
+	.hero-actions {
+		display: flex;
+		gap: 0.9em;
+		margin-top: 1.4em;
+		flex-wrap: wrap;
+	}
+
+	/* Focus cards */
+	.focus-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5em;
+	}
+	.focus-card {
+		padding: 1.8em;
+	}
+	.focus-glyph {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+		border-radius: var(--radius-md);
+		background: var(--accent-soft);
+		color: var(--accent);
+		margin-bottom: 0.9em;
+	}
+	.focus-card h3 {
+		margin-bottom: 0.4em;
+	}
+	.focus-card p {
+		color: var(--muted);
+		margin: 0;
+	}
+
+	/* Timeline */
+	.timeline {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+	}
+	.timeline-item {
+		display: grid;
+		grid-template-columns: 24px 1fr;
+		gap: 1.2em;
+		position: relative;
+	}
+	.timeline-item:not(:last-child) {
+		padding-bottom: 1.5em;
+	}
+	.timeline-marker {
+		display: flex;
+		justify-content: center;
+		position: relative;
+	}
+	.timeline-marker::before {
+		content: '';
+		position: absolute;
+		top: 22px;
+		bottom: -1.5em;
+		width: 2px;
+		background: var(--border);
+	}
+	.timeline-item:last-child .timeline-marker::before {
+		display: none;
+	}
+	.timeline-dot {
+		width: 14px;
+		height: 14px;
+		border-radius: 50%;
+		background: var(--surface);
+		border: 3px solid var(--accent);
+		margin-top: 6px;
+		z-index: 1;
+	}
+	.timeline-item.is-current .timeline-dot {
+		background: var(--accent);
+		box-shadow: 0 0 0 4px var(--accent-soft);
+	}
+	.timeline-content {
+		padding: 1.5em 1.6em;
+		margin-bottom: 0.5em;
+	}
+	.timeline-when {
+		font-family: var(--font-mono);
+		font-size: 0.8em;
+		color: var(--muted);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	.timeline-role {
+		display: flex;
+		align-items: center;
+		gap: 0.6em;
+		margin: 0.3em 0 0.2em 0;
+		font-size: 1.2em;
+	}
+	.timeline-org {
+		color: var(--muted);
+		margin: 0 0 0.8em 0;
+		font-size: 0.95em;
+	}
+	.timeline-points {
+		margin: 0;
+		padding-left: 1.2em;
+	}
+	.timeline-points li {
+		color: var(--ink-soft);
+		margin-bottom: 0.4em;
+		font-size: 0.95em;
+	}
+
+	/* Skills */
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5em;
+	}
+	.skills-card {
+		padding: 1.6em;
+	}
+	.skills-card h3 {
+		margin-bottom: 1em;
+		font-size: 1.05em;
+	}
+	.skills-badges {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+	}
+
+	/* Open source card */
+	.oss-card {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.4em;
+		padding: 1.6em;
+		text-decoration: none;
+		color: inherit;
+	}
+	.oss-card :global(.icon-tile) {
+		margin-top: 0.1em;
+	}
+	.oss-body h3 {
+		margin-bottom: 0.4em;
+	}
+	.oss-body p {
+		color: var(--muted);
+		margin-bottom: 0.9em;
+	}
+	.oss-body .project-link {
+		font-family: var(--font-mono);
+		font-size: 0.85em;
+		color: var(--accent);
+		font-weight: 500;
+	}
+
+	/* Contact CTA (shared look with home page) */
+	.cta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5em;
+		flex-wrap: wrap;
+		padding: 2.5em;
+		background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+	}
+	.cta h2 {
+		margin-bottom: 0.3em;
+	}
+	.cta p {
+		margin: 0;
+		color: var(--muted);
+		max-width: 50ch;
+	}
+
+	@media (max-width: 720px) {
+		.about-hero {
+			flex-direction: column;
+			align-items: flex-start;
+			text-align: right;
+			gap: 1.5em;
+			padding-top: 2.5em;
+		}
+		.hero-copy h1 {
+			font-size: 2.1em;
+		}
+		.focus-grid,
+		.skills-grid {
+			grid-template-columns: 1fr;
+		}
+		.oss-card {
+			flex-direction: column;
+		}
+		.cta {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+</style>

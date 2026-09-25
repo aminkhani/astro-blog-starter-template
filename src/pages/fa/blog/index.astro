@@ -1,0 +1,94 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { SITE_TITLE } from '../../../consts';
+import { getCollection } from 'astro:content';
+import { getReadingTime } from '../../../utils/readingTime';
+
+const SITE_DESCRIPTION_FA =
+	'یادداشت‌هایی درباره توسعه بک‌اند با جنگو، سخت‌سازی سیستم، مدیریت آسیب‌پذیری و DevSecOps.';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+	<head>
+		<BaseHead title={`وبلاگ — ${SITE_TITLE}`} description={SITE_DESCRIPTION_FA} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="blog-hero">
+				<p class="eyebrow">نوشته‌ها</p>
+				<h1>وبلاگ</h1>
+				<p class="blog-lede">
+					یادداشت‌هایی درباره توسعه بک‌اند با جنگو، سخت‌سازی سیستم، مدیریت آسیب‌پذیری و
+					DevSecOps — بیشتر چیزهایی که واقعاً در محیط عملیاتی اجرا کرده‌ام.
+				</p>
+				<p class="lang-note">
+					این نوشته‌ها هنوز فقط به انگلیسی موجودند؛ ترجمه فارسی به‌مرور اضافه خواهد شد.
+				</p>
+			</section>
+			<section class="section post-grid-section">
+				{
+					posts.length > 0 ? (
+						<div class="post-grid">
+							{posts.map((post) => (
+								<PostCard
+									href={`/blog/${post.id}/`}
+									title={post.data.title}
+									description={post.data.description}
+									pubDate={post.data.pubDate}
+									heroImage={post.data.heroImage}
+									readingTime={getReadingTime(post.body || '')}
+									tags={post.data.tags}
+								/>
+							))}
+						</div>
+					) : (
+						<p>هنوز نوشته‌ای وجود ندارد — بعداً دوباره سر بزنید.</p>
+					)
+				}
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.lang-note {
+		font-size: 0.85em;
+		color: var(--muted);
+	}
+	.blog-hero {
+		padding: 3.5em 0 1em 0;
+		max-width: 60ch;
+	}
+	.blog-lede {
+		color: var(--muted);
+		font-size: 1.05em;
+	}
+	.post-grid-section {
+		padding-top: 1em;
+	}
+	.post-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5em;
+	}
+	@media (max-width: 900px) {
+		.post-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	@media (max-width: 640px) {
+		.post-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
