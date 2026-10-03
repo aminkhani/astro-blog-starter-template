@@ -11,6 +11,7 @@ export const ui = {
 		"nav.blog": "Blog",
 		"nav.projects": "Projects",
 		"nav.about": "About",
+		"resume.download": "Download resume",
 		"footer.built": "Built with Astro on Cloudflare Workers",
 		"project.viewGithub": "View on GitHub →",
 		"blog.notTranslated":
@@ -21,6 +22,7 @@ export const ui = {
 		"nav.blog": "وبلاگ",
 		"nav.projects": "پروژه‌ها",
 		"nav.about": "درباره من",
+		"resume.download": "دانلود رزومه",
 		"footer.built": "ساخته‌شده با Astro روی Cloudflare Workers",
 		"project.viewGithub": "مشاهده در گیت‌هاب ←",
 		"blog.notTranslated":

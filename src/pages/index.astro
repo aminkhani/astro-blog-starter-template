@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import ResumeButton from "../components/ResumeButton.astro";
 import PostCard from "../components/PostCard.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
@@ -38,6 +39,7 @@ const posts = (await getCollection("blog"))
                         <a class="btn btn-primary" href="/blog">Read the blog</a
                         >
                         <a class="btn btn-secondary" href="/about">About me</a>
+                        <ResumeButton />
                     </div>
                 </div>
                 <div
