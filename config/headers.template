@@ -1,0 +1,21 @@
+# Security headers served by Cloudflare for every static response.
+# {{SCRIPT_SRC_HASHES}} is replaced at build time by integrations/security-headers.mjs
+# with the SHA-256 hash of every inline <script> found in the built HTML,
+# so scripts need no 'unsafe-inline'. Edit this file, not dist/_headers.
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self' {{SCRIPT_SRC_HASHES}}; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  X-Permitted-Cross-Domain-Policies: none
+
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/Amin-Khani-Resume.pdf
+  Content-Disposition: attachment; filename="Amin-Khani-Resume.pdf"
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: noarchive

@@ -2,6 +2,19 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+// Self-hosted fonts (no third-party requests; keeps the CSP free of external origins)
+import '@fontsource/space-grotesk/latin-500.css';
+import '@fontsource/space-grotesk/latin-600.css';
+import '@fontsource/space-grotesk/latin-700.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import '@fontsource/ibm-plex-mono/latin-500.css';
+import '@fontsource/vazirmatn/arabic-400.css';
+import '@fontsource/vazirmatn/arabic-500.css';
+import '@fontsource/vazirmatn/arabic-600.css';
+import '@fontsource/vazirmatn/arabic-700.css';
 import { getLangSwitchPath } from '../i18n/utils';
 
 interface Props {
@@ -19,7 +32,6 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="generator" content={Astro.generator} />
 
 <!-- Theme: applied before first paint to avoid a flash of the wrong theme -->
 <script is:inline>
@@ -36,13 +48,6 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
 <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-	href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap"
-	rel="stylesheet"
-/>
-
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
